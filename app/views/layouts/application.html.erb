@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>game share</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="headder">
+      <nav class="nav">
+        <%= link_to root_path do %>
+      <%= image_tag "logo.png", class:"logo" %>
+      <% end %>
+        <ul class="nav-item">
+          <li><%= link_to "投稿を見る", "#" %></li>
+          <li><%= link_to "アカウント作成", "#" %></li>
+          <li><%= link_to "ログイン", "#" %></li>
+        </ul>
+      </nav>
+    </div>
+    <%= yield %>
+  </body>
+</html>
