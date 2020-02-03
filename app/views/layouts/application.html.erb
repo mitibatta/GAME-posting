@@ -10,14 +10,18 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>" role="alert"><%= value %><button type="button" class="close" data-dismiss="alert">&times;</button></div>
+<% end %>
+
     <div class="headder">
-      <nav class="nav">
+      <nav class="navbar navbar-default navbar-fixed-top navbar-transparent">
         <%= link_to root_path do %>
       <%= image_tag "logo.png", class:"logo" %>
       <% end %>
         <ul class="nav-item">
           <li><%= link_to "投稿を見る", "#" %></li>
-          <li><%= link_to "アカウント作成", "#" %></li>
+          <li><%= link_to "アカウント作成", new_user_path %></li>
           <li><%= link_to "ログイン", "#" %></li>
         </ul>
       </nav>
