@@ -88,6 +88,11 @@ body{
   }
 }
 
+.user-new-wrapper{
+  background-color:#ddd;
+  height:780px;
+
+
 .form_box{
   margin-top:150px;
   
@@ -104,4 +109,31 @@ body{
   h1{
     margin-bottom:45px;
   }
+  .form-text{
+    resize:vertical;
+    max-height:300px;
+    min-height:80px;
+  }
+}
+}
+
+.posts-index-wrapper{
+  background-color:#ddd;
+  padding-top:80px;
+  .post-parts{
+    margin-top:20px;
+    background-color:white;
+    padding-bottom: 20px;
+    padding-top:20px;
+    // border: 3px solid #777;
+    border-radius:5px;
+    text-align:center;
+    
+    img {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      width: 80%;
+    }
+  }
+  
 }

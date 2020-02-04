@@ -1,0 +1,19 @@
+<div class="posts-index-wrapper">
+  <% @posts.each do |post| %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-2 col-md-8">
+        
+        <div class="post-parts">
+        <h2 class="user-name"><%= post.user.name %></h2>
+        <%= image_tag post.image.url %>
+        <p><%= simple_format(post.text) %></p>
+        <!--いいねボタン-->
+        <!--コメントボタン-->
+       
+        </div>
+      </div>
+    </div>
+  </div>
+   <% end %>
+</div>

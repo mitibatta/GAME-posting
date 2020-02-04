@@ -19,11 +19,20 @@
         <%= link_to root_path do %>
       <%= image_tag "logo.png", class:"logo" %>
       <% end %>
+      <% if logged_in? %>
+      <ul class="nav-item">
+        <li><%= link_to "投稿一覧", posts_path %></li>
+         <li><%= link_to "いいね一覧", "#" %></li>
+          <li><%= link_to "投稿する", new_post_path %></li>
+           <li><%= link_to "サインアウト", logout_path, method: :delete %></li>
+      </ul>
+      <% else %>
         <ul class="nav-item">
           <li><%= link_to "投稿を見る", "#" %></li>
           <li><%= link_to "アカウント作成", new_user_path %></li>
           <li><%= link_to "ログイン", login_path %></li>
         </ul>
+        <% end %>
       </nav>
     </div>
     <%= yield %>

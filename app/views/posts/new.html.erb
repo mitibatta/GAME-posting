@@ -1,0 +1,20 @@
+<div class="user-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 form_box">
+        <h1>投稿する</h1>
+        <%= form_for @post do |f| %>
+        <div class="form-group">
+          <%= f.label :image, :"画像か動画" %>
+          <%= f.file_field :image %>
+        </div>
+        <div class="form-group">
+          <%= f.label :text, :"テキスト" %>
+          <%= f.text_area :text, class:"form-control form-text" %>
+        </div>
+        <%= f.submit "投稿", class:"btn-block btn-white" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
