@@ -5,12 +5,30 @@
       <div class="col-md-offset-2 col-md-8">
         
         <div class="post-parts">
-        <h2 class="user-name"><%= post.user.name %></h2>
+        <h2 class="user-name"><%= link_to post.user.name, "#", class:"text" %></h2>
+        <% if post.image.file.content_type.include?('image/') %>
         <%= image_tag post.image.url %>
-        <p><%= simple_format(post.text) %></p>
-        <!--いいねボタン-->
-        <!--コメントボタン-->
-       
+        <% else %>
+        <%= video_tag post.image.url, width: "80%", height: "100%", 
+                  controls: true, autobuffer: true %>
+        <% end %>
+        <p><%= link_to simple_format(post.text), "#", class:"text" %></p>
+        <ul class="public">
+          <li><%= link_to "#" do %>
+            <%= image_tag "comment.png", class:"icon" %>
+            <% end %>
+            </li>
+            <li><%= link_to "#" do %>
+            <%= image_tag "heart-black.png", class:"icon" %>
+            <% end %>
+            </li>
+        </ul>
+       <% if logged_in? && post.user_id == current_user.id %>
+       <ul class="user-only">
+         <li><%= link_to "編集", "#", class:"btn" %></li>
+         <li><%= link_to "削除", "#", class:"btn" %></li>
+       </ul>
+       <% end %>
         </div>
       </div>
     </div>

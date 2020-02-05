@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, success: "投稿完了"
     else
-      frash.now[:danger] = "投稿に失敗しました。"
+      flash.now[:danger] = "投稿に失敗しました。"
       render :new
     end
   end

@@ -132,8 +132,30 @@ body{
     img {
       margin-top: 10px;
       margin-bottom: 20px;
-      width: 80%;
+      // width: 80%;
     }
+  }
+  ul{
+    list-style:none;
+    display:flex;
+    
+    .icon{
+      width:40px;
+      height:40px;
+      margin-top:30px;
+    }
+  }
+  .user-only{
+    justify-content:flex-end;
+  }
+  
+  .public{
+    justify-content:space-around;
+  }
+  
+  .text{
+    text-decoration:none;
+    color:#000;
   }
   
 }
