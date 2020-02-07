@@ -1,15 +1,14 @@
 <div class="posts-index-wrapper">
+  <h1 class="text-center"><%= @user.name %>の投稿</h1>
   <% @posts.each do |post| %>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-offset-2 col-md-8">
-        
-        <div class="post-parts">
-        <h2 class="user-name"><%= link_to post.user.name, post.user, id: post.user.id, class:"text" %></h2>
-        <% if post.image.file.content_type.include?('image/') %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <div class="post-parts">
+            <% if post.image.file.content_type.include?('image/') %>
         <%= image_tag post.image.url %>
         <% else %>
-        <%= video_tag post.image.url, width: "90%", height: "90%", 
+        <%= video_tag post.image.url, width: "80%", height: "100%", 
                   controls: true, autobuffer: true %>
         <% end %>
         <p><%= link_to simple_format(post.text), post, id: post.id, class:"text" %></p>
@@ -36,9 +35,9 @@
          <li><%= link_to "削除", "#", class:"btn" %></li>
        </ul>
        <% end %>
+          </div>
         </div>
-      </div>
     </div>
   </div>
-   <% end %>
+  <% end %>
 </div>

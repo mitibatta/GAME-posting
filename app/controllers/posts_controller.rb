@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc).includes(:favorite_users)
   end
   
   def create
@@ -15,6 +15,10 @@ class PostsController < ApplicationController
       flash.now[:danger] = "投稿に失敗しました。"
       render :new
     end
+  end
+  
+  def show
+    @post = Post.find_by(id: params[:id])
   end
   
   

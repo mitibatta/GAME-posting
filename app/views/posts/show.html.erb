@@ -1,44 +1,43 @@
 <div class="posts-index-wrapper">
-  <% @posts.each do |post| %>
   <div class="container">
     <div class="row">
-      <div class="col-md-offset-2 col-md-8">
-        
+      <div class="col-md-offset-1 col-md-10">
         <div class="post-parts">
-        <h2 class="user-name"><%= link_to post.user.name, post.user, id: post.user.id, class:"text" %></h2>
-        <% if post.image.file.content_type.include?('image/') %>
-        <%= image_tag post.image.url %>
+        <% if @post.image.file.content_type.include?('image/') %>
+        <%= image_tag @post.image.url, class:"image"%>
         <% else %>
-        <%= video_tag post.image.url, width: "90%", height: "90%", 
+        <%= video_tag @post.image.url, class:"image", 
                   controls: true, autobuffer: true %>
         <% end %>
-        <p><%= link_to simple_format(post.text), post, id: post.id, class:"text" %></p>
+        <p class="text"><%= simple_format(@post.text) %></p>
         <ul class="public">
           <li><%= link_to "#" do %>
             <%= image_tag "comment.png", class:"icon" %>
             <% end %>
             </li>
-            <% if !post.favorite_users.include?(current_user) %>
-            <li><%= link_to favorites_path(post_id: post.id), method: :post do %>
+            <% if !@post.favorite_users.include?(current_user) %>
+            <li><%= link_to favorites_path(post_id: @post.id), method: :post do %>
             <%= image_tag "heart-black.png", class:"icon" %>
             <% end %>
             </li>
             <% else %>
-            <li><%= link_to favorites_path(post_id: post.id), method: :delete do %>
+            <li><%= link_to favorites_path(post_id: @post.id), method: :delete do %>
             <%= image_tag "heart-red.png", class:"icon" %>
             <% end %>
             </li>
             <% end %>
         </ul>
-       <% if logged_in? && post.user_id == current_user.id %>
+       <% if logged_in? && @post.user_id == current_user.id %>
        <ul class="user-only">
          <li><%= link_to "編集", "#", class:"btn" %></li>
          <li><%= link_to "削除", "#", class:"btn" %></li>
        </ul>
        <% end %>
-        </div>
+       <div class="comment">
+         <h1>コメント</h1>
+       </div>
+       </div>
       </div>
     </div>
   </div>
-   <% end %>
 </div>

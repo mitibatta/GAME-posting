@@ -120,6 +120,13 @@ body{
 .posts-index-wrapper{
   background-color:#ddd;
   padding-top:80px;
+
+  h1{
+    font-size:38px;
+  }
+  .text-center{
+    text-align:center;
+  }
   .post-parts{
     margin-top:20px;
     background-color:white;
@@ -156,6 +163,11 @@ body{
   .text{
     text-decoration:none;
     color:#000;
+  }
+  
+  .image{
+    width:90%;
+    height:auto;
   }
   
 }
