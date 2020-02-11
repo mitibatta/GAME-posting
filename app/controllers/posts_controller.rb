@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def new
     @post = Post.new
+    @post.pictures.build
   end
   
   def index
@@ -8,7 +9,7 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = current_user.posts.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to posts_path, success: "投稿完了"
     else
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:text, :image)
+    params.require(:post).permit(:text, pictures_attributes: [:image, :video])
   end
   
 end
