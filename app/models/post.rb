@@ -1,7 +1,6 @@
 class Post < ApplicationRecord
   
   validates :user_id, presence:true
-  validates :image, presence:true
   validates :text, presence:true
   
   has_many :pictures

@@ -6,9 +6,9 @@
         
         <div class="post-parts">
         <h2 class="user-name"><%= link_to post.user.name, post.user, id: post.user.id, class:"text" %></h2>
-        <%= image_tag post.picture.image.url if post.picture.image? %>
-        <%= video_tag post.picture.video.url, width: "90%", height: "90%", 
-                  controls: true, autobuffer: true if post.picture.video? %>
+        <%= image_tag post.pictures.image.url if post.pictures.image? %>
+        <%= video_tag post.pictures.video.url, width: "90%", height: "90%", 
+                  controls: true, autobuffer: true if post.pictures.video? %>
         <p><%= link_to simple_format(post.text), post, id: post.id, class:"text" %></p>
         <ul class="public">
           <li><%= link_to "#" do %>
