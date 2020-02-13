@@ -1,0 +1,19 @@
+<div class="user-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 form_box">
+        <h1>コメントする</h1>
+        <%= form_for @comment do |f| %>
+        <div class="form-group">
+          <%= f.label :text, :"コメント" %>
+          <%= f.text_area :text, class:"form-control form-text" %>
+          <%= f.hidden_field :post_id, value: @comment.post_id %>
+        </div>
+        <% if logged_in? %>
+        <%= f.submit "投稿", class:"btn-block btn-white" %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

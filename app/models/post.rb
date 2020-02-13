@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :user_id, presence:true
   validates :text, presence:true
   
+  has_many :comments
   has_many :pictures
   has_many :favorites
   belongs_to :user

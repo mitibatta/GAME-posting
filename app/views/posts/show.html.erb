@@ -3,15 +3,14 @@
     <div class="row">
       <div class="col-md-offset-1 col-md-10">
         <div class="post-parts">
-        <% if @post.image.file.content_type.include?('image/') %>
-        <%= image_tag @post.image.url, class:"image"%>
-        <% else %>
-        <%= video_tag @post.image.url, class:"image", 
-                  controls: true, autobuffer: true %>
+        <% @post.pictures.each do |picture| %>
+        <%= image_tag picture.image.url if picture.image? %>
+        <%= video_tag picture.video.url, width: "90%", height: "90%", 
+                  controls: true, autobuffer: true if picture.video? %>
         <% end %>
         <p class="text"><%= simple_format(@post.text) %></p>
         <ul class="public">
-          <li><%= link_to "#" do %>
+          <li><%= link_to comments_path(post_id: @post.id) do %>
             <%= image_tag "comment.png", class:"icon" %>
             <% end %>
             </li>
@@ -35,6 +34,10 @@
        <% end %>
        <div class="comment">
          <h1>コメント</h1>
+         <% @post.comments.each do |comment| %>
+         <%= comment.user.name %>
+         <%= comment.text %>
+         <% end %>
        </div>
        </div>
       </div>

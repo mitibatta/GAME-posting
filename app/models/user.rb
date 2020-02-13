@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :password, length:{maximum:32}
   validates :password, format:{ with: /\A[\w]+\z/}
   
+  has_many :comments
   has_many :posts
   has_many :pictures
   has_many :favorites
