@@ -101,6 +101,13 @@ body{
   }
   .form-group{
     margin-bottom:20px;
+    
+    .hidden-text{
+  color:#555;
+  font-size:12px;
+  margin-top:20px;
+  }
+    
   }
   .btn-block{
     height:35px;
@@ -115,6 +122,7 @@ body{
     min-height:80px;
   }
 }
+
 }
 
 .posts-index-wrapper{
@@ -165,9 +173,42 @@ body{
     color:#000;
   }
   
+  .none{
+    text-decoration:none;
+  }
+  
   .image{
     width:90%;
     height:auto;
+  }
+  
+  .comment-title{
+    border-bottom: 2px solid #ddd;
+    padding-bottom:10px;
+    width:930px;
+    margin:0 auto;
+  }
+  
+  .comment{
+    width:460px;
+    margin:0 auto;
+    h2{
+      font-size:24px;
+    }
+    p{
+      font-size:20px;
+    }
+  }
+  .border{
+    height:3px;
+    width:930px;
+    margin:0 auto;
+     border-bottom: 2px double #999;
+  }
+  
+  .paginate-area{
+    display:flex;
+    justify-content:space-between;
   }
   
 }

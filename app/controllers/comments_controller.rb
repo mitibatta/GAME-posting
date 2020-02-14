@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def new
     @comment = Comment.new
+    @comment.post_id = params[:post_id]
   end
   
   
@@ -10,7 +11,7 @@ class CommentsController < ApplicationController
     # @comment.post_id = params[:post_id]
     
     if @comment.save
-      redirect_to post_path, success:"コメントを投稿しました。"
+      redirect_to post_path(@comment.post_id), success:"コメントを投稿しました。"
     else
       flash.now[:danger] = "コメントに失敗しました。"
       render :new

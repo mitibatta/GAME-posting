@@ -1,0 +1,30 @@
+<div class="user-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 form_box">
+        <h1>編集する</h1>
+        <%= form_for @post, url:edit_post_path do |f| %>
+        <%= f.fields_for :pictures do |pic| %>
+        <div class="form-group">
+          <%= pic.label :image, :"画像" %>
+          <%= pic.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+          <%= pic.label :video, :"動画" %>
+          <%= pic.file_field :video, accept: 'video/*' %>
+          <P class="hidden-text">*画像か動画どちらかは必須です。</P>
+          <%= pic.hidden_field :id, value: pic.object.id %>
+          <%= pic.hidden_field :user_id, value: current_user.id %>
+          <%= pic.hidden_field :post_id, value: @post.id %>
+        </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :text, :"テキスト" %>
+          <%= f.text_area :text, class:"form-control form-text", value: @post.text %>
+        </div>
+        <% if logged_in? %>
+        <%= f.submit "投稿", class:"btn-block btn-white" %>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
