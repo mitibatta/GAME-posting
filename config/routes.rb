@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :api, {format: 'json'} do
+    resources :favorites, only: [:index, :create, :destroy]
+  end
+  
+  
   get '/comments', to: 'comments#new'
   post '/comments', to: 'comments#create'
   get 'sessions/new'
