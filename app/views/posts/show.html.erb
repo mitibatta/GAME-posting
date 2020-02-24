@@ -1,3 +1,6 @@
+<%= javascript_pack_tag 'comment' %>
+
+<div id="comment">
 <div class="posts-index-wrapper">
   <div class="container">
     <div class="row">
@@ -10,10 +13,8 @@
         <% end %>
         <p class="text"><%= simple_format(@post.text) %></p>
         <ul class="public">
-          <li><%= link_to comments_path(post_id: @post.id), class:"none" do %>
-            <%= image_tag "comment.png", class:"icon" %>
-            <% end %>
-            <%= @post.comment_users.count %>
+          <li>
+            <comment-btn :user-id="<%= current_user.id %>" :post-id="<%= @post.id %>"></comment-btn>
             </li>
             <% if !@post.favorite_users.include?(current_user) %>
             <li><%= link_to favorites_path(post_id: @post.id), class:"none", method: :post do %>
@@ -47,4 +48,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

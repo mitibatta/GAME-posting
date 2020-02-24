@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    resources :comments, only:[:create]
+  end
   namespace :api, {format: 'json'} do
     resources :favorites, only: [:index, :create, :destroy]
   end

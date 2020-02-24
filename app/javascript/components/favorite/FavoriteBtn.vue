@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-if="isfavorited" @click="deletefavorite()">
-      <img src=".images/heart-red.png" alt="いいねボタン"> {{ count }}
+      いいね済み {{ count }}
     </div>
     <div v-else @click="registerfavorite()">
-      <img src=".images/heart-black.png" alt="いいねボタン"> {{ count }}
+      いいね {{ count }}
     </div>
   </div>
 </template>
@@ -31,15 +31,15 @@ export default {
       return Boolean(this.findFavoriteId())
     }
   },
-  created: function() {
-    this.feathFavoriteByPostId().then(result => {
-      this.favoriteList = result
-    })
-  },
+  // created: function() {
+  //   this.feathFavoriteByPostId().then(result => {
+  //     this.favoriteList = result
+  //   })
+  // },
   
-  method: {
+  methods: {
       feathFavoriteByPostId: async function() {
-        const res = await axios.get(`api/favorites/?post_id=${this.postId}`);
+        const res = await axios.get("/posts");
         if (res.status !== 200){process.exit()};
         return res.data
       },

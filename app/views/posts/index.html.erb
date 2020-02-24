@@ -1,4 +1,6 @@
-<div class="posts-index-wrapper">
+<%= javascript_pack_tag 'index' %>
+
+<div class="posts-index-wrapper" id="favorite">
   <% @posts.each do |post| %>
   <div class="container">
     <div class="row">
@@ -18,19 +20,7 @@
             <% end %>
             <%= post.comment_users.count %>
             </li>
-            <% if !post.favorite_users.include?(current_user) %>
-            <li><%= link_to favorites_path(post_id: post.id), class:"none", method: :post do %>
-            <%= image_tag "heart-black.png", class:"icon" %>
-            <% end %>
-            <%= post.favorite_users.count %>
-            </li>
-            <% else %>
-            <li><%= link_to favorites_path(post_id: post.id), class:"none", method: :delete do %>
-            <%= image_tag "heart-red.png", class:"icon" %>
-            <% end %>
-            <%= post.favorite_users.count %>
-            </li>
-            <% end %>
+            <li><favorite-btn :user-id='<%= current_user.id %>' :post-id='<%= post.id %>'></favorite-btn></li>
         </ul>
        <% if logged_in? && post.user_id == current_user.id %>
        <ul class="user-only">
